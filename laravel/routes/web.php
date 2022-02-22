@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "Home Page";
+    return '<h1>Home page</h1>';
 })->name("home.index");
 
 
