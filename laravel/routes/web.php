@@ -13,27 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'HomePage';
-}) -> name('home.index');
+// Route::get('/', function () {
+//     return view('home.index', []);
+// })->name("home.index");
+Route::view('/', 'home.index')->name('home.index');
+Route::view('/contact', 'home.contact')->name('home.contact');
 
-Route::get('/contact', function () {
-    return 'Contact Page';
-}) -> name('home.contact');
+// Route::get('/contact', function() {
+//     return view('home.contact', []);
+// })->name('home.contact');
 
-
-Route::get('/posts/{id}', function ($id) {
-    return 'Post id=' . $id;
+Route::get('/posts/{id}', function($id) {
+    $posts = [
+        1 => [
+            'title' => 'Intro to Laravel',
+            'content' => 'This is a short intro to Laravel'
+        ],
+        2 => [
+            'title' => 'Intro to PHP',
+            'content' => 'This is a short intro to PHP'
+        ]
+    ];
+    
+    abort_if(!isset($posts[$id]), 404);
+    return view('posts.show', ['post' => $posts[$id]]);
 })
-// -> where([
+// ->where([
 //     'id' => '[0-9]+'
 // ])
--> name('posts');
+->name("posts.show");
 
-Route::get('/recent-posts/{num_days?}', function ($num_days = 20){
-    return 'Viewing Post from ' . $num_days . ' ago';
-});
-
-
-
-
+Route::get('/recent-posts/{days_ago?}', function($days_ago = 20) {
+    return 'Posts from ' . $days_ago . ' days ago';
+})->name('posts.recent.index');
