@@ -14,26 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return 'HomePage';
-}) -> name('home.index');
-
-Route::get('/contact', function () {
-    return 'Contact Page';
-}) -> name('home.contact');
-
-
-Route::get('/posts/{id}', function ($id) {
-    return 'Post id=' . $id;
-})
-// -> where([
-//     'id' => '[0-9]+'
-// ])
--> name('posts');
-
-Route::get('/recent-posts/{num_days?}', function ($num_days = 20){
-    return 'Viewing Post from ' . $num_days . ' ago';
+    return view('welcome');
 });
-
-
-
-
