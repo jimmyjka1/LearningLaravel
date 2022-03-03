@@ -4,10 +4,11 @@
 
 
 @section('content')
-    @foreach ($posts as $key => $post)
-        <h1>{{ $key }}.{{ $post['title'] }}</h1>
-        <p>{{ $post['content'] }}</p>
-    @endforeach
+    @forelse ($posts as $key => $post)
+        @include('posts.partials.post')
+    @empty
+        No post found
+    @endforelse
 
 
 
