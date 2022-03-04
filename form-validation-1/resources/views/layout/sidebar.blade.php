@@ -6,8 +6,8 @@
                 <a href="#">@yield('sidebar_title')</a>
             </div>
         </div>
-        <li><a href="">Home</a></li>
-        <li><a href="">Create User</a></li>
+        <li><a href="{{ route('user.index') }}">Home</a></li>
+        <li><a href="{{ route('user.new.form') }}">Create User</a></li>
         
     </ul>
 </nav>

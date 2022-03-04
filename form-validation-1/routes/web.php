@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UserController::class , 'index']) -> name('user.index');
 
 Route::get('/user/new', [UserController::class, 'newUserForm']) -> name('user.new.form');
+
+
+Route::post('/user/create', [UserController::class, 'createNewUser']) -> name('user.create');
