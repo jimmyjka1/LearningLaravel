@@ -64,3 +64,11 @@ Route::get('/posts', function() use ($posts) {
 Route::get('/recent-posts/{days_ago?}', function($days_ago = 20) {
     return 'Posts from ' . $days_ago . ' days ago';
 })->name('posts.recent.index');
+
+
+Route::get('/fun/responses', function() use ($posts){
+    return response($posts, 201) 
+    -> header('Content-Type', 'application/json')
+    -> cookie('MY_COOKIE', 'Jimmy Kumar Ahalapra', 3600);
+});
+
