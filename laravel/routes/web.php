@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\VarDumper\VarDumper;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,29 +47,67 @@ $posts = [
 ];
 
 
-Route::get('/posts/{id}', function($id) use ($posts) {
-    
-    
+Route::get('/posts/{id}', function ($id) use ($posts) {
+
+
     abort_if(!isset($posts[$id]), 404);
     return view('posts.show', ['post' => $posts[$id]]);
 })->name("posts.show");
 
-Route::get('/posts', function() use ($posts) {
+Route::get('/posts', function () use ($posts) {
     // compact($posts) == ['posts' => $posts]
     return view('posts.index', ['posts' => $posts]);
-})-> name('posts.index');
+})->name('posts.index');
 // ->where([
 //     'id' => '[0-9]+'
 // ])
 
-Route::get('/recent-posts/{days_ago?}', function($days_ago = 20) {
+Route::get('/recent-posts/{days_ago?}', function ($days_ago = 20) {
     return 'Posts from ' . $days_ago . ' days ago';
 })->name('posts.recent.index');
 
 
-Route::get('/fun/responses', function() use ($posts){
-    return response($posts, 201) 
-    -> header('Content-Type', 'application/json')
-    -> cookie('MY_COOKIE', 'Jimmy Kumar Ahalapra', 3600);
+Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
+
+
+    Route::get('/responses', function () use ($posts) {
+        return response($posts, 201)
+            ->header('Content-Type', 'application/json')
+            ->cookie('MY_COOKIE', 'Jimmy Kumar Ahalapra', 3600);
+    }) -> name('responses');
+
+    Route::get('/redirect', function () {
+        return redirect('contact');
+    }) -> name('redirect');
+
+
+    Route::get('/back', function () {
+        return back();
+    }) -> name('back');
+
+    Route::get('/named-route/', function ($id = 1) {
+        return redirect()->route('posts.show', ['id' => $id]);
+    }) -> name('named-route');
+
+    Route::get('/away', function () {
+        return redirect()->away('https://www.google.com');
+    }) -> name('away');
+    
+    Route::get('/json', function () use ($posts) {
+        return response()->json($posts);
+    }) -> name('json');
+    
+    Route::get('/download', function () {
+        return response()->download(public_path('/daniel.jpg', 'pratyush.jpg'));
+    }) -> name('download');
+
 });
+
+
+
+
+
+
+
+
 
