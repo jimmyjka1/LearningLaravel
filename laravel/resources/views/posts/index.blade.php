@@ -11,5 +11,10 @@
     @endforelse
 
 
+    <div class="m-2">
+        <a href="{{ route('posts.create') }}" class="btn btn-primary">Create New Post</a>
+    </div>
+
+
 
 @endsection

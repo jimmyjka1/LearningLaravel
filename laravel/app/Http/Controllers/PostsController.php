@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    
+
 
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => BlogPost::orderBy('created_at', 'desc')->take(5)->get()]);
+        return view('posts.index', ['posts' => BlogPost::orderBy('created_at', 'desc')->get()]);
     }
 
     /**
@@ -26,7 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,9 +36,19 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        //
+        $validated = $request -> validated();
+        $post = BlogPost::create($validated);
+        /**
+         * Alternate ways 
+         * $post -> title = $request -> name('title');
+         * $post -> content = $request -> name('content');
+         */
+
+        $post->save();
+        $request -> session() -> flash('status', 'Post successfully created');
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**
