@@ -77,7 +77,7 @@ $posts = [
 //     return 'Posts from ' . $days_ago . ' days ago';
 // })->name('posts.recent.index');
 
-Route::resource('posts', PostsController::class)->only(['index', 'show', 'create', 'store']);
+Route::resource('posts', PostsController::class);
 
 
 

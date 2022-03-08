@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('title', 'Create the post')
+@section('title', 'Update the post')
 
 
 
@@ -18,16 +18,15 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('posts.store') }}" method="post" id="create-form">
+        <form action="{{ route('posts.update', ['post' => $post -> id]) }}" method="post">
             @csrf
+            @method('PUT')
             @include('posts.partials.form')
             <div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('posts.index') }}">Show All Posts</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('posts.index') }}">Cancel</a>
             </div>
         </form>
     </div>
-
-    {!! JsValidator::formRequest('App\Http\Requests\StorePost', "#create-form") !!}
 
 @endsection
