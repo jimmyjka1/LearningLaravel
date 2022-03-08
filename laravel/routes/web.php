@@ -3,8 +3,10 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\VarDumper\VarDumper;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,15 @@ use Symfony\Component\VarDumper\VarDumper;
 Route::get('/', [HomeController::class, 'home'])->name("home.index");
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 Route::get('/single', AboutController::class);
+Route::get('/signedURL', function (Request $request) {
+
+
+    if ($request->hasValidSignature()) {
+        return "Valid Signed URL";
+    } else {
+        return "Invalid Signed URL";
+    }
+})->name('home.signed');
 // Route::view('/', 'home.index')
 //     ->name('home.index');
 // Route::view('/contact', 'home.contact')
@@ -66,7 +77,7 @@ $posts = [
 //     return 'Posts from ' . $days_ago . ' days ago';
 // })->name('posts.recent.index');
 
-Route::resource('posts', PostsController::class) -> only(['index', 'show', 'create', 'store']);
+Route::resource('posts', PostsController::class)->only(['index', 'show', 'create', 'store']);
 
 
 
@@ -77,40 +88,35 @@ Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
         return response($posts, 201)
             ->header('Content-Type', 'application/json')
             ->cookie('MY_COOKIE', 'Jimmy Kumar Ahalapra', 3600);
-    }) -> name('responses');
+    })->name('responses');
 
     Route::get('/redirect', function () {
         return redirect('contact');
-    }) -> name('redirect');
+    })->name('redirect');
 
 
     Route::get('/back', function () {
         return back();
-    }) -> name('back');
+    })->name('back');
 
     Route::get('/named-route/', function ($id = 1) {
         return redirect()->route('posts.show', ['id' => $id]);
-    }) -> name('named-route');
+    })->name('named-route');
 
     Route::get('/away', function () {
         return redirect()->away('https://www.google.com');
-    }) -> name('away');
-    
+    })->name('away');
+
     Route::get('/json', function () use ($posts) {
         return response()->json($posts);
-    }) -> name('json');
-    
+    })->name('json');
+
     Route::get('/download', function () {
         return response()->download(public_path('/daniel.jpg', 'pratyush.jpg'));
-    }) -> name('download');
+    })->name('download');
 
+
+    Route::get('/signed-route', function () {
+        return URL::signedRoute('home.signed');
+    })->name('signed-route');
 });
-
-
-
-
-
-
-
-
-
