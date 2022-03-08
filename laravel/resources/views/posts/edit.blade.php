@@ -18,7 +18,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('posts.update', ['post' => $post -> id]) }}" method="post">
+        <form action="{{ route('posts.update', ['post' => $post -> id]) }}" method="post" id="update-form">
             @csrf
             @method('PUT')
             @include('posts.partials.form')
@@ -28,5 +28,5 @@
             </div>
         </form>
     </div>
-
+    {!! JsValidator::formRequest('App\Http\Requests\StorePost', "#update-form") !!}
 @endsection
