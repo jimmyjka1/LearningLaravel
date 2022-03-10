@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostFormRequest;
 use App\Models\Category;
+use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -16,7 +18,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $likes = Like::select(DB::raw('post_id, count(*) as count')) ->  groupBy('post_id') -> get() -> keyBy('post_id') ;
+        // dd($likes -> toArray());
+        $current_user_like = Like::where('user_id', session() -> get('user_id')) -> get() -> keyBy('post_id');
+        $posts = Post::get();
+        return view('post.index', ['posts' => $posts, 'likes' => $likes, 'current_user_like' => $current_user_like]);
     }
 
     /**
@@ -58,7 +64,12 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $user_id = session() -> get('user_id');
+        $current_user = Like::where('user_id', $user_id) -> where('post_id', $post -> id) -> count();
+        $like_count = Like::where('post_id', $post -> id) -> count();
+
+        
+        return view('post.show', ['post' => $post, 'current_user' => $current_user, 'like_count' => $like_count]);
     }
 
     /**
@@ -69,7 +80,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $user_id = session() -> get('user_id');
+        if ($user_id != $post -> user_id){
+            abort(404);
+        }
+        $categories = Category::get();
+        return view('post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -79,9 +95,15 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostFormRequest $request, Post $post)
     {
-        //
+        $user_id = session() -> get('user_id');
+        if ($user_id != $post -> user_id){
+            abort(404);
+        }
+        $post -> fill($request -> validated());
+        $post -> save();
+        return redirect() -> route('post.show', ['post' => $post -> id ]);
     }
 
     /**
@@ -91,7 +113,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
-    {
-        //
+    {   
+
+        abort_if(session() -> get('user_id') != $post -> user_id, 404 );
+        $post -> delete();
+        return redirect() -> route('post.index');
     }
 }

@@ -11,7 +11,8 @@
     @enderror
 </div>
 <div class="form-group  my-2">
-    <textarea name="description" placeholder="Description"
+    
+    <textarea name="description" placeholder="Description" rows="10" cols="30"
         class="form-control @error('description') is-invalid @enderror">{{ old('description', optional($post ?? null)->description) }}</textarea>
     @error('description')
         <div class="text-danger">{{ $message }}</div>

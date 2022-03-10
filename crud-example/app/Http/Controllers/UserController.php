@@ -123,12 +123,14 @@ class UserController extends Controller
         }
 
         session() -> put('user_id', $result[0] -> id);
+        session() -> put('name', $result[0] -> first_name . " " . $result[0] -> last_name);
         return redirect() -> route('home');
     }
 
 
     public function logout(){
         session() -> forget('user_id');
+        session() -> forget('name');
         return redirect() -> route('user.login_page');
     }
 }

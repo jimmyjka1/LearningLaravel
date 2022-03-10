@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,10 @@ Route::prefix('user/') -> name('user.') -> group(function(){
 });
 Route::resource('user', UserController::class);
 Route::resource('post', PostController::class);
+
+
+
+Route::prefix('like-post/') -> name('like_post.') -> group(function (){
+    Route::post('like/',[LikeController::class, 'like']) -> name('like');
+    Route::post('dislike/', [LikeController::class, 'dislike']) -> name('dislike');
+});

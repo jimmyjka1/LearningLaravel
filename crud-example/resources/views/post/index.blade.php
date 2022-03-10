@@ -4,25 +4,65 @@
 
 
 @section('content')
-    <div class=" d-flex justify-content-center align-items-center flex-column">
-        <div class="shadow-sm w-50">
-            <h2 class="text-center">All Users</h2>
-            <div class="userContainerList p-3">
-                <table width="300px" class="table table-striped p-3">
-                    <tr>
-                        <th class="p-2">User ID</th>
-                        <th class="p-2">Full Name</th>
-                        <th class="p-2">Email</th>
-                        <th class="p-2">Action</th>
-                    </tr>
-                    @foreach ($users as $user)
-                        @include('user.partial.user_item')
-                    @endforeach
-                </table>
+    <div class="d-flex flex-wrap justify-content-center align-items-center ">
+        @forelse ($posts as $post)
+            @include('post.partial.post_item')
+        @empty
+            <h2>No Posts Found</h2>
+        @endforelse
 
-                <a href="{{ route('user.create') }}" class="btn btn-success">Create New User</a>
-            </div>
-        </div>
-
+        
     </div>
+
+    <style>
+        .bi.bi-heart, .bi.bi-heart-fill {
+            cursor: pointer;
+            color: red;
+        
+        }
+
+        .card {
+            transition: all 0.5s ease-in-out;
+            cursor: default;
+        }
+
+        .card:hover {
+            box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.692);
+        }
+
+    </style>
+
+    <script>
+        function likePost(id){
+            $button = $('#like-button-' + id);
+            if ($button.hasClass('bi-heart')){
+                $.post({
+                    url: "{{ route('like_post.like') }}",
+                    data:  {
+                        post_id: id
+                    },
+                    success: function($response){
+                        $('#like-count-' + id).text($response);
+                        $button.removeClass('bi-heart');
+                        $button.addClass('bi-heart-fill');
+                    }
+                });
+            } else {
+                $.post({
+                    url: "{{ route('like_post.dislike') }}",
+                    data:  {
+                        post_id: id
+                    },
+                    success: function($response){
+                        $('#like-count-' + id).text($response);
+                        $button.removeClass('bi-heart-fill');
+                        $button.addClass('bi-heart');
+                    }
+                })
+            }
+        }
+
+        
+    </script>
 @endsection
+
