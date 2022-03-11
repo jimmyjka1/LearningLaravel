@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']) -> name('home');
+// Route::get('/', [HomeController::class, 'index']) -> name('home');
+Route::get('/', function(){
+    return redirect() -> route('post.index');
+}) -> name('home');
 
 
 Route::prefix('user/') -> name('user.') -> group(function(){
@@ -33,4 +37,10 @@ Route::resource('post', PostController::class);
 Route::prefix('like-post/') -> name('like_post.') -> group(function (){
     Route::post('like/',[LikeController::class, 'like']) -> name('like');
     Route::post('dislike/', [LikeController::class, 'dislike']) -> name('dislike');
+});
+
+
+Route::prefix('comment/') -> name('comment.') -> group(function (){
+    Route::post('add/', [CommentController::class, 'add_comment']) -> name('add');
+    Route::post('delete/', [CommentController::class, 'delete_comment']) -> name('delete');
 });

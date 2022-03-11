@@ -38,6 +38,7 @@
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <a href="{{ route('home') }}">Go Home</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
     </form>
 </body>

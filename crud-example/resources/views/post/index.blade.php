@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <div class="d-flex flex-wrap justify-content-center align-items-center ">
+    <div class="d-flex flex-column flex-wrap justify-content-center align-items-center ">
         @forelse ($posts as $post)
             @include('post.partial.post_item')
         @empty
@@ -27,7 +27,19 @@
         }
 
         .card:hover {
-            box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.692);
+            box-shadow: 0px 0px 15px rgba(128, 128, 128, 0.692);
+        }
+
+        .like-btn-container {
+            margin-top: 8rem;
+        }
+
+        a.blog-title {
+            text-decoration: none;
+            color: black
+        }
+        a.blog-title:hover {
+            text-decoration: underline;
         }
 
     </style>
