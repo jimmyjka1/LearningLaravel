@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table -> string('description', 2000);
+            $table -> text('description', 2000);
             $table->integer('status') -> default(1) -> comment('0 => inactive, 1 => active');
             $table -> bigInteger('category_id');
             $table -> bigInteger('user_id');

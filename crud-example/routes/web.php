@@ -30,7 +30,7 @@ Route::prefix('user/') -> name('user.') -> group(function(){
     Route::get('logout', [UserController::class, 'logout']) -> name('logout');
 });
 Route::resource('user', UserController::class);
-Route::resource('post', PostController::class);
+Route::resource('post', PostController::class)->middleware('login_required');
 
 
 

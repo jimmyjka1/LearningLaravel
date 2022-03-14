@@ -26,7 +26,7 @@ class PostController extends Controller
         $likes = Like::select(DB::raw('post_id, count(*) as count')) ->  groupBy('post_id') -> get() -> keyBy('post_id') ;
         $comments = Comment::select(DB::raw('post_id, count(*) as count')) ->  groupBy('post_id') -> get() -> keyBy('post_id') ;
         $current_user_like = Like::where('user_id', session() -> get('user_id')) -> get() -> keyBy('post_id');
-        $posts = Post::get();
+        $posts = Post::select('*') -> orderBy('updated_at', 'DESC')->get();
         $current_timestamp = Carbon::now();
         // dd($posts[0] -> created_at, Carbon::now());
         // $is_new = $posts[0] -> created_at -> diffInSeconds(Carbon::now()) < 10;

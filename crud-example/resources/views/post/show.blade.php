@@ -118,6 +118,13 @@
         .back-arrow:hover {
             text-shadow: 0px 0px 15px rgba(128, 128, 128, 0.61)
         }
+
+        .comment_profile_image {
+            width: 2vw;
+            border: 1px solid black;
+            margin-right: 0.5em;
+            border-radius: 50%
+        }
     </style>
     <script>
         function likePost(id) {
@@ -174,7 +181,7 @@
                         $noComment.remove();
                     }
                     $("#commentContainer").prepend(
-                        '<div class="m-2 p-2 comment w-100" id="comment'+response+'"><h6 class="d-inline-block">{{ $user -> first_name }} {{ $user -> last_name }}</h6> | 0 seconds <i class="ms-3 mt-2 d-inline-block bi bi-trash-fill text-danger" onclick=\'deleteComment('+response+')\'></i><hr> '+text+' </div>'
+                        '<div class="m-2 p-2 comment w-100" id="comment'+response+'"><h6 class="d-inline-block"><img class="comment_profile_image" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user">{{ $user -> first_name }} {{ $user -> last_name }}</h6> | 0 seconds <i class="ms-3 mt-2 d-inline-block bi bi-trash-fill text-danger" onclick=\'deleteComment('+response+')\'></i><hr> '+text+' </div>'
                     );
 
                     input_element.val("");
@@ -188,7 +195,9 @@
 
         function deleteComment(id) {
 
-
+            if (!confirm("Delete this comment ?")){
+                return;
+            } 
             $.post({
                 url: '{{ route('comment.delete') }}',
                 data: {
