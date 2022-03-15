@@ -84,7 +84,7 @@ class PostController extends Controller
         // dd($comments);
         $user_id = session() -> get('user_id');
         $user = User::find($user_id);
-        $auther = User::find($post -> user_id);
+        $auther = User::withTrashed() -> find($post -> user_id);
 
         $current_user = Like::where('user_id', $user_id) -> where('post_id', $post -> id) -> count();
         $like_count = Like::where('post_id', $post -> id) -> count();
