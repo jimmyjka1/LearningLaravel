@@ -24,7 +24,7 @@
             @include('posts.partials.form')
             <div>
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('posts.index') }}">Cancel</a>
+                <a href="{{ route('posts.show', ['post' => $post -> id ]) }}">Cancel</a>
             </div>
         </form>
     </div>
