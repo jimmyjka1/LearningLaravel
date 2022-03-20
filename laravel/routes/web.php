@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\URL;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name("home.index");
-Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+// Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 Route::get('/single', AboutController::class);
 Route::get('/signedURL', function (Request $request) {
 
@@ -123,4 +123,4 @@ Route::prefix('/fun')->name('fun.')->group(function () use ($posts) {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
