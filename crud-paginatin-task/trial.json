@@ -1,0 +1,281 @@
+[{
+        "id": 11,
+        "name": "Seventh Product",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:09:54.000000Z",
+        "updated_at": "2022-03-15T12:12:11.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 12,
+        "name": "Third",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:10:37.000000Z",
+        "updated_at": "2022-03-15T12:15:06.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 13,
+        "name": "Seventh Product",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:10:44.000000Z",
+        "updated_at": "2022-03-15T12:12:08.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 14,
+        "name": "Fourth",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 200,
+        "price": 900,
+        "image": null,
+        "description": "dfsfsfd",
+        "status": 1,
+        "created_at": "2022-03-15T12:12:21.000000Z",
+        "updated_at": "2022-03-15T12:15:14.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 15,
+        "name": "Fifth",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:12:53.000000Z",
+        "updated_at": "2022-03-15T12:15:21.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 16,
+        "name": "Sixth",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:13:37.000000Z",
+        "updated_at": "2022-03-15T12:15:38.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 17,
+        "name": "eigth product",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:13:52.000000Z",
+        "updated_at": "2022-03-15T12:15:48.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 18,
+        "name": "Ninth",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": "2022-03-15T12:14:01.000000Z",
+        "updated_at": "2022-03-15T12:15:54.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 19,
+        "name": "first Product",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 123,
+        "price": 123,
+        "image": null,
+        "description": "nothing",
+        "status": 1,
+        "created_at": null,
+        "updated_at": "2022-03-15T12:00:17.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 20,
+        "name": "second product",
+        "brand_id": 1,
+        "category_id": 1,
+        "stock": 1,
+        "price": 123,
+        "image": null,
+        "description": "no description",
+        "status": 1,
+        "created_at": null,
+        "updated_at": "2022-03-15T12:00:18.000000Z",
+        "deleted_at": null,
+        "category": {
+            "id": 1,
+            "name": "First Category",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        },
+        "brand": {
+            "id": 1,
+            "name": "Brand 1",
+            "created_at": null,
+            "updated_at": null,
+            "deleted_at": null
+        }
+    }
+]
